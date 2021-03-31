@@ -20,10 +20,11 @@ Public Class ImportCsvFile
 
         If fd.ShowDialog() = DialogResult.OK Then
             strFileName = fd.FileName
+        Else
+            GoTo en
         End If
 
         fileName = fd.FileName & fd.DefaultExt
-
         objFSO = CreateObject("Scripting.FileSystemObject")
         objTF = objFSO.OpenTextFile(fileName, 1)
         strIn = objTF.readall
@@ -31,11 +32,8 @@ Public Class ImportCsvFile
 
         ary1 = Split(strIn, vbNewLine)
 
-
-        For i = 0 To 0
-            ary2 = Split(ary1(i), ",")
-            ReDim myCSVdata(0 To UBound(ary1), 0 To UBound(ary2))
-        Next i
+        ary2 = Split(ary1(0), ",")
+        ReDim myCSVdata(0 To UBound(ary1), 0 To UBound(ary2))
 
         For i = 0 To UBound(ary1)
             ary2 = Split(ary1(i), ",")
@@ -43,6 +41,6 @@ Public Class ImportCsvFile
                 myCSVdata(i, j) = ary2(j)
             Next j
         Next i
+En:
     End Sub
-
 End Class
