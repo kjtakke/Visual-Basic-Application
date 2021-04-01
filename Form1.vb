@@ -5,7 +5,11 @@
     End Sub
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
-        csvImport.CsfToArray()
+        csvImport.ImportTextFiley()
+    End Sub
 
+    Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
+        csvImport.ImportCSV()
+        MsgBox(csvImport.CSVdata(0, 1))
     End Sub
 End Class
